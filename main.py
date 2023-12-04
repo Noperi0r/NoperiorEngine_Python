@@ -3,6 +3,7 @@ import moderngl as mgl
 import sys
 from model import *
 from camera import Camera
+from light import Light
 
 class GraphicsEngine:
     def __init__(self, winSize=(1600,900)):
@@ -26,6 +27,8 @@ class GraphicsEngine:
         self.clock = pg.time.Clock()
         self.time = 0 # tracking time
         self.delta_time = 0
+        # light
+        self.light = Light()
         
         # 모델을 엔진에 나오게 하려면 모델 객체를 만들고 렌더링 메소드 호출하면 됨 
 
