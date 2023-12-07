@@ -37,7 +37,6 @@ class GraphicsEngine:
         # scene
         self.scene = Cube(self)
 
-
         
     def check_events(self): # 이벤트 감지
         for event in pg.event.get():
