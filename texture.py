@@ -5,7 +5,7 @@ class Texture:
     def __init__(self, ctx):
         self.ctx = ctx
         self.textures = {}
-        self.textures[0] = self.get_texture(path='textures/test.png')
+        self.textures[0] = self.get_texture(path='textures/test.png') # 텍스처 종류들 로드.
         self.textures[1] = self.get_texture(path='textures/wood.png')
         #self.textures[2] = self.get_texture(path='textures/test.png')
         

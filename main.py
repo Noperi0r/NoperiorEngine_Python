@@ -4,6 +4,8 @@ import sys
 from model import *
 from camera import Camera
 from light import Light
+from mesh import Mesh
+from scene import Scene
 
 class GraphicsEngine:
     def __init__(self, winSize=(1600,900)):
@@ -31,17 +33,19 @@ class GraphicsEngine:
         self.light = Light()
         
         # 모델을 엔진에 나오게 하려면 모델 객체를 만들고 렌더링 메소드 호출하면 됨 
-
         # camera
         self.camera = Camera(self)
+        #mesh
+        self.mesh = Mesh(self)
         # scene
-        self.scene = Cube(self)
+        self.scene = Scene(self)
 
         
     def check_events(self): # 이벤트 감지
         for event in pg.event.get():
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
-                self.scene.destroy() # 종료 시 리소스 해제
+                #self.scene.destroy() # 종료 시 리소스 해제
+                self.mesh.destroy()
                 pg.quit()
                 sys.exit()
         

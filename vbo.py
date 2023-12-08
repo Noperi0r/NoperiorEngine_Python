@@ -3,7 +3,7 @@ import numpy as np
 class VBO: # Access VBO of what we want
     def __init__(self, ctx):
         self.vbos = {}
-        self.vbos['cube'] = CubeVBO(ctx)
+        self.vbos['cube'] = CubeVBO(ctx) # main에서는 vbo 클래스에서 dictionary를 통해 vbo들 불러올 것임.
         
     def destroy(self):
         [vbo.destroy() for vbo in self.vbos.values()]
