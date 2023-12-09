@@ -1,9 +1,11 @@
 import numpy as np
+import pywavefront 
 
 class VBO: # Access VBO of what we want
     def __init__(self, ctx):
         self.vbos = {}
         self.vbos['cube'] = CubeVBO(ctx) # main에서는 vbo 클래스에서 dictionary를 통해 vbo들 불러올 것임.
+        self.vbos['cat'] = CatVBO(ctx)
         
     def destroy(self):
         [vbo.destroy() for vbo in self.vbos.values()]
@@ -67,4 +69,17 @@ class CubeVBO(BaseVBO):
       
         vertex_data = np.hstack([normals, vertex_data]) 
         vertex_data = np.hstack([tex_coord_data, vertex_data]) # 배열 하나에 texture coord, 정점 coord 다 넣음
+        return vertex_data
+    
+class CatVBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position'] # 이전에 설정한 형식과 똑같음. 
+        
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('Objects/cat/20430_Cat_v1_NEW.obj', cache=True, parse=True) # Cache, parse 참 설정
+        obj = objs.materials.popitem()[1] 
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
         return vertex_data

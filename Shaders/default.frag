@@ -43,8 +43,11 @@ vec3 getLight(vec3 color)
 
 void main()
 {
+    float gamma = 2.2;
     //vec3 color = vec3(uv_0,0);
     vec3 color = texture(u_texture_0, uv_0).rgb; // color에 texture, uv 대입
+    color = pow(color, vec3(gamma)); // texture color를 non linear에서 linear space로 변형
     color = getLight(color);
+    color = pow(color, 1 / vec3(gamma)); // color 역함수 
     fragColor = vec4(color, 1.0);
 }
