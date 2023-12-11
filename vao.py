@@ -10,6 +10,8 @@ class VAO:
 
         # Cube VAO
         self.vaos['cube'] = self.get_vao(program=self.program.programs['default'], vbo=self.vbo.vbos['cube'])
+        # Cat VAO
+        self.vaos['cat'] = self.get_vao(program=self.program.programs['default'], vbo=self.vbo.vbos['cat'])
         
     def get_vao(self, program, vbo):
         vao = self.ctx.vertex_array(program, [(vbo.vbo, vbo.format, *vbo.attribs)])

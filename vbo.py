@@ -39,7 +39,7 @@ class CubeVBO(BaseVBO):
         data = [vertices[ind] for triangle in indices for ind in triangle]
         return np.array(data, dtype='f4')
     
-    def get_vertex_data(self):
+    def get_vertex_data(self):  
         vertices = [(-1,-1,1), (1,-1,1), (1,1,1), (-1,1,1), (-1,1,-1), (-1,-1,-1), (1,-1,-1), (1,1,-1)] # 삼각형 정점 정의. 0~7 index 존재
         
         indices = [(0,2,3), (0,1,2),
@@ -49,7 +49,7 @@ class CubeVBO(BaseVBO):
                    (3,7,4), (3,2,7),
                    (0,6,1), (0,5,6),] # 사각형 이루는 삼각형들 index로 정의 
         vertex_data = self.get_data(vertices, indices) # 큐브 정점 데이터 생성
-
+        
         tex_coord = [(0,0), (1,0), (1,1), (0,1)] # texture coordinate from 0 to 1. 좌표에 인덱스 부여 0 1 2 3 
         tex_coord_indicies = [(0,2,3),(0,1,2),
                               (0,2,3),(0,1,2),
@@ -78,8 +78,9 @@ class CatVBO(BaseVBO):
         self.attribs = ['in_texcoord_0', 'in_normal', 'in_position'] # 이전에 설정한 형식과 똑같음. 
         
     def get_vertex_data(self):
-        objs = pywavefront.Wavefront('Objects/cat/20430_Cat_v1_NEW.obj', cache=True, parse=True) # Cache, parse 참 설정
+        objs = pywavefront.Wavefront('Objects/Cat/20430_Cat_v1_NEW.obj', cache=True, parse=True) # Cache, parse 참 설정
         obj = objs.materials.popitem()[1] 
         vertex_data = obj.vertices
         vertex_data = np.array(vertex_data, dtype='f4')
         return vertex_data
+    
