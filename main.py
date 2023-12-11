@@ -6,6 +6,7 @@ from camera import Camera
 from light import Light
 from mesh import Mesh
 from scene import Scene
+from scene_renderer import SceneRenderer
 
 class GraphicsEngine:
     def __init__(self, winSize=(1600,900)):
@@ -39,6 +40,8 @@ class GraphicsEngine:
         self.mesh = Mesh(self)
         # scene
         self.scene = Scene(self)
+        # renderer
+        self.scene_renderer = SceneRenderer(self)
 
         
     def check_events(self): # 이벤트 감지
@@ -53,7 +56,8 @@ class GraphicsEngine:
         # frame buffer clear
         self.ctx.clear(color=(0.08, 0.16, 0.18)) # 색깔은 0~255에서 0~1로 normalized.
         #render scene
-        self.scene.render()        
+        #self.scene.render()        
+        self.scene_renderer.render()
         # screen 색 채우고, double buffer swap.
         pg.display.flip()
      
