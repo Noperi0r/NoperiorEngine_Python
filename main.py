@@ -54,7 +54,7 @@ class GraphicsEngine:
         
     def render(self): # 렌더링 메소드
         # frame buffer clear
-        self.ctx.clear(color=(0.08, 0.16, 0.18)) # 색깔은 0~255에서 0~1로 normalized.
+        self.ctx.clear(color=(0.678, 0.659, 0.839)) # 색깔은 0~255에서 0~1로 normalized.
         #render scene
         #self.scene.render()        
         self.scene_renderer.render()

@@ -6,6 +6,7 @@ class VBO: # Access VBO of what we want
         self.vbos = {}
         self.vbos['cube'] = CubeVBO(ctx) # main에서는 vbo 클래스에서 dictionary를 통해 vbo들 불러올 것임.
         self.vbos['cat'] = CatVBO(ctx)
+        self.vbos['cat2'] = Cat2VBO(ctx)
         
     def destroy(self):
         [vbo.destroy() for vbo in self.vbos.values()]
@@ -83,4 +84,18 @@ class CatVBO(BaseVBO):
         vertex_data = obj.vertices
         vertex_data = np.array(vertex_data, dtype='f4')
         return vertex_data
+    
+class Cat2VBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position'] 
+        
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('Objects/Cat2/12221_Cat_v1_l3.obj', cache=True, parse=True) # Cache, parse 참 설정
+        obj = objs.materials.popitem()[1] 
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+    
     

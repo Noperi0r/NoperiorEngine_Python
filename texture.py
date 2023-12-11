@@ -9,6 +9,8 @@ class Texture:
         self.textures[1] = self.get_texture(path='textures/wood.png')
         #self.textures[2] = self.get_texture(path='textures/test.png')
         self.textures['cat'] = self.get_texture(path='objects/cat/20430_cat_diff_v1.jpg')
+        self.textures['cat2'] = self.get_texture(path='objects/cat2/Cat_diffuse.jpg')
+        
         
     def get_texture(self, path):
         texture = pg.image.load(path).convert() # image > display surface convert

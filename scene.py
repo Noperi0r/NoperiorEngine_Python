@@ -23,9 +23,13 @@ class Scene:
                 add(Cube(app,tex_id=1 ,pos=(x,-s,z)))
         
         add(Cat(app, pos=(0,-2,-10)))
-        
         self.moving_cube = MovingCube(app, pos=(0,6,8), scale=(3,3,3), tex_id=1)
         add(self.moving_cube)
+
+        self.cat2 = Cat2(app, pos=(-10,2,-5))
+        self.cat3 = Cat2(app, pos=(-10,14,-5))
+        add(self.cat2)
+        add(self.cat3)
     
     def render(self):
         for obj in self.objects:
@@ -33,3 +37,7 @@ class Scene:
             
     def update(self):
         self.moving_cube.rot.xyz = self.app.time
+        self.cat2.rot.z = self.app.time * 2
+        self.cat3.rot.z = -self.app.time * 4
+        
+        
