@@ -73,5 +73,5 @@ class GraphicsEngine:
             self.delta_time = self.clock.tick(60) # framrate 60 설정
 
 if __name__ == '__main__':
-    app = GraphicsEngine() 
+    app = GraphicsEngine()
     app.run()

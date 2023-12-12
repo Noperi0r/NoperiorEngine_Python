@@ -37,7 +37,7 @@ class Scene:
             
     def update(self):
         self.moving_cube.rot.xyz = self.app.time
-        self.cat2.rot.z = self.app.time * 2
+        self.cat2.rot.z = self.app.time * 12
         self.cat3.rot.z = -self.app.time * 4
         
         

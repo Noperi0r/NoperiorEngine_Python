@@ -20,6 +20,9 @@ void main()
 {
     uv_0 = in_texcoord_0;
     fragPos = vec3(m_model * vec4(in_position, 1.0)); // fragPos도 world space로 전달.   
+
+    // 설명: m_model의 역행렬은 모델의 변환을 거꾸로 취함 -> 월드 좌표계에서 로컬 좌표계로 변환하는 역할 ??
+
     normal = mat3(transpose(inverse(m_model))) * normalize(in_normal);  // world space에서 light 계산. 따라서 model matrix만 곱해줌 
                                                                         // 그냥 m model만 곱하면 모델이 uniformly scaled하지 않을 때 노말 이상하게 나오므로 연산 더 해줌 
     gl_Position = m_proj * m_view * m_model * vec4(in_position, 1.0); // vertex 포지션 정의. 
